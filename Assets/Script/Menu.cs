@@ -10,7 +10,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject gameMenu;    // Container chính của menu
     [SerializeField] EnemySpawner enemySpawner; // Tham chiếu đến EnemySpawner
     [SerializeField] GameObject player;      // Tham chiếu trực tiếp đến Player
-
     void Start()
     {
         // Ban đầu chỉ hiển thị menu khởi động
@@ -20,7 +19,7 @@ public class MenuManager : MonoBehaviour
         map1.SetActive(false);
         map2.SetActive(false);
         gameMenu.SetActive(true);
-
+        
         // Tắt EnemySpawner lúc đầu
         if (enemySpawner != null)
         {
@@ -79,7 +78,6 @@ public class MenuManager : MonoBehaviour
         gameMenu.SetActive(false);
         map1.SetActive(true);
         map2.SetActive(false);
-
         // Bật Player khi chơi Map 1
         if (player != null)
         {
@@ -147,7 +145,6 @@ public class MenuManager : MonoBehaviour
         gameMenu.SetActive(false);
         map1.SetActive(false);
         map2.SetActive(true);
-
         // Bật Player khi chơi Map 2
         if (player != null)
         {
@@ -184,7 +181,6 @@ public class MenuManager : MonoBehaviour
         {
             gameManager.EnableMapUI();
         }
-
         // Bật EnemySpawner khi chọn Map 2
         if (enemySpawner != null)
         {
@@ -228,7 +224,6 @@ public class MenuManager : MonoBehaviour
         map1.SetActive(false);
         map2.SetActive(false);
         gameMenu.SetActive(true);
-
         // Tắt EnemySpawner khi quay lại menu
         if (enemySpawner != null)
         {

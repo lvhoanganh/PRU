@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI countWave;
     [SerializeField] private TextMeshProUGUI countWaveIn;
     [SerializeField] private GameObject gameOverUi;
+    [SerializeField] private GameUI audioManager;
+    [SerializeField] private GameObject pause;
     private bool isGameOver = false;
 
     void Awake()
@@ -45,6 +47,8 @@ public class GameManager : MonoBehaviour
         UpdateCountBoom();
         UpdateCountWave();
         UpdateCountWaveIn();
+        pause.SetActive(false);
+        audioManager.playDefaultAudio();
         if (gameOverUi != null)
         {
             gameOverUi.SetActive(false);
@@ -105,6 +109,7 @@ public class GameManager : MonoBehaviour
             if (boss != null)
             {
                 boss.SetActive(true);
+                audioManager.playBossAudio();
                 Debug.Log("Boss activated.");
             }
             else
@@ -170,7 +175,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("Boss is not assigned in GameManager!");
         }
-
+        audioManager.playDefaultAudio();
         ResetGame();
     }
 
@@ -381,6 +386,12 @@ public class GameManager : MonoBehaviour
             Destroy(bomb);
         }
 
+        GameObject[] hpObjects = GameObject.FindGameObjectsWithTag("hp");
+        foreach (GameObject hp in hpObjects)
+        {
+            Destroy(hp);
+        }
+
         // Hồi máu và đưa Player về vị trí ban đầu
         Player player = Object.FindFirstObjectByType<Player>(FindObjectsInactive.Include);
         if (player != null)
@@ -427,7 +438,7 @@ public class GameManager : MonoBehaviour
     public void BackToMenu()
     {
         Debug.Log("Returning to menu...");
-
+        pause.SetActive(false);
         // Đặt lại các biến trạng thái
         isGameOver = false;
         currentEnergy = 0;
@@ -504,6 +515,12 @@ public class GameManager : MonoBehaviour
             Destroy(bomb);
         }
 
+        GameObject[] hpObjects = GameObject.FindGameObjectsWithTag("hp");
+        foreach (GameObject hp in hpObjects)
+        {
+            Destroy(hp);
+        }
+
         // Tìm MenuManager và gọi backToMenu()
         MenuManager menuManager = FindObjectOfType<MenuManager>();
         if (menuManager != null)
@@ -520,5 +537,21 @@ public class GameManager : MonoBehaviour
         UpdateCountBoom();
         UpdateCountWave();
         UpdateCountWaveIn();
+    }
+
+    public bool getBoss()
+    {
+        return bossCalled;
+    }
+
+    public void PauseGameMenu()
+    {
+        pause.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void ResumeGame()
+    {
+        pause.SetActive(false);
+        Time.timeScale = 1f;
     }
 }

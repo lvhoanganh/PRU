@@ -8,7 +8,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private float shotDelay = 0.15f;
     private float nextShot;
     private bool isAutoFire = false;
-
+    [SerializeField] private GameUI audioManager;
     void Update()
     {
         RotateGun();
@@ -44,7 +44,8 @@ public class Gun : MonoBehaviour
                 nextShot = Time.time + shotDelay;
                 Quaternion reversedRotation = Quaternion.Euler(0, 0, firePos.rotation.eulerAngles.z + 180f);
                 Instantiate(bulletPrefabs, firePos.position, reversedRotation);
-            }
+                audioManager.playShootSound();
+            }           
         }
         else
         {
@@ -53,7 +54,9 @@ public class Gun : MonoBehaviour
                 nextShot = Time.time + shotDelay;
                 Quaternion reversedRotation = Quaternion.Euler(0, 0, firePos.rotation.eulerAngles.z + 180f);
                 Instantiate(bulletPrefabs, firePos.position, reversedRotation);
+                audioManager.playShootSound();
             }
+            
         }
     }
 
@@ -63,6 +66,8 @@ public class Gun : MonoBehaviour
         {
             isAutoFire = !isAutoFire;
             Debug.Log("Fire mode: " + (isAutoFire ? "Automatic" : "Single"));
+            audioManager.playReLoadSound();
         }
+        
     }
 }

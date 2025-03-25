@@ -5,6 +5,7 @@ public class PlayerCollections : MonoBehaviour
     private float timer = 0f;
     private bool isCollidingWithBlock = false;
     [SerializeField] GameManager gameManager;
+    [SerializeField] GameUI audioManager;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Player player = GetComponent<Player>();
@@ -16,6 +17,7 @@ public class PlayerCollections : MonoBehaviour
         {
             gameManager.AddEnergy();
             Destroy(collision.gameObject);
+            audioManager.playEnergySound();
         }
         else if (collision.CompareTag("hp"))
         {
@@ -23,6 +25,7 @@ public class PlayerCollections : MonoBehaviour
             gameManager.AddEnergy();
             gameManager.IncreaseBulletDamage(2);
             Destroy(collision.gameObject);
+            audioManager.playEnergySound();
         }
     }
 
