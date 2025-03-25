@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Ground
+  - Block
+  - PlayerBullet
+  - Enemy
+  - Energy
+  - King
+  - EnemyBullet
+  - Bow
+  - Bomb
+  - boss
+  - Boss
+  - CountBoom
+  - CountWaveIn
+  - CountWave
+  - Map1
+  - Map2
+  - hp
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Rock
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Ground
+    uniqueID: 674927471
+    locked: 0
+  - name: Floor
+    uniqueID: 3642461427
+    locked: 0
+  - name: Water
+    uniqueID: 349354617
+    locked: 0
+  - name: Energy
+    uniqueID: 1700036923
+    locked: 0
+  - name: Rock
+    uniqueID: 3836953417
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Block
+    uniqueID: 892400407
+    locked: 0
+  - name: Player
+    uniqueID: 613775587
+    locked: 0
+  - name: PlayerBullet
+    uniqueID: 1435774581
+    locked: 0
+  - name: Gun
+    uniqueID: 3178721971
+    locked: 0
+  - name: Enemy
+    uniqueID: 1499828225
+    locked: 0
+  - name: Blood
+    uniqueID: 3979644053
+    locked: 0
+  - name: HpBar
+    uniqueID: 508223345
+    locked: 0
+  - name: GameUi
+    uniqueID: 2012108101
+    locked: 0
+  m_RenderingLayers:
+  - Default
